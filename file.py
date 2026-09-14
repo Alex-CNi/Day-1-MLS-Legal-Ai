@@ -3,7 +3,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv() 
 
-st.title("Roast Me Ai")
+st.title("LAWS90286")
 
 if "people" not in st.session_state:
     st.session_state.people = {}
@@ -38,7 +38,7 @@ client = OpenAI()
 
 response = client.responses.create(
     model="gpt-4o",
-    input=f"Write a good insult about a {name} and {age}.",
+    input=f"Write a very brutal roast about a {name} and {age}, give the output in both English and Chinese.",
 )
 
 st.write(response.output_text)
