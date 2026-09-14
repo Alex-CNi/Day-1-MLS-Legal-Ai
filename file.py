@@ -3,7 +3,9 @@ from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv() 
 
+#this is for the matrix styled background:
 import random
+
 
 def matrix_bg(columns: int = 45):
     streaks = "".join(
@@ -77,19 +79,23 @@ def matrix_bg(columns: int = 45):
 
 matrix_bg()
 
+#The code above is for the matrix styled background.
+#This is the page title:
 st.title("LAWS90286")
 
+#This saves the name and age of the user in a session state dictionary called "people". This allows the app to remember the user's name and age even if they navigate away from the page or refresh it.
 if "people" not in st.session_state:
     st.session_state.people = {}
 
+#This defines X as the variable for the user entered name:
 X = st.text_input("What is your name?")
 name = X
-
+#This asks for the user's age and saves it, the min_value and max_value parameters ensure that the user can only enter a valid age between 0 and 120, and the step parameter ensures that the user can only enter whole numbers.
 age = st.number_input("How old are you?", min_value=0, max_value=120, step=1)
 
 if st.button("Hi"):
-    st.session_state.people[name] = age
-    st.write("Welcome", name)
+    st.session_state.people[X] = age
+    st.write("Welcome", X)
     st.write(name, "is", age,"years old")
 
     if age <= 26:
