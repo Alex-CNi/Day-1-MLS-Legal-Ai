@@ -1,8 +1,9 @@
 import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
+load_dotenv() 
 
-st.title("Name Program")
+st.title("Roast Me Ai")
 
 if "people" not in st.session_state:
     st.session_state.people = {}
@@ -37,7 +38,7 @@ client = OpenAI()
 
 response = client.responses.create(
     model="gpt-4o",
-    input="Write a one-sentence bedtime story about a unicorn.",
+    input=f"Write a good insult about a {name} and {age}.",
 )
 
 st.write(response.output_text)
