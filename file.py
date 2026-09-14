@@ -1,4 +1,6 @@
 import streamlit as st
+from openai import OpenAI
+from dotenv import load_dotenv
 
 st.title("Name Program")
 
@@ -27,3 +29,15 @@ if st.button("Find"):
         st.write(lookup, "is", st.session_state.people[lookup], "years old")
     else:
         st.write("No record for", lookup)
+
+
+
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-4o",
+    input="Write a one-sentence bedtime story about a unicorn.",
+)
+
+st.write(response.output_text)
