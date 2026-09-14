@@ -23,6 +23,27 @@ if st.button("Hi"):
     else:
         st.write("Haha you're old lol blehhhhhhhhh")
 
+
+
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-4o",
+    input=f"Write a very brutal and creative roast about a {name} and {age}, give the output in both English and Chinese.",
+)
+
+if st.button("Start"):
+    response = client.responses.create(
+        model="gpt-4o",
+        input=f"Write a very brutal and creative roast about a {name} and {age}, give the output in both English and Chinese.",
+    )
+    with st.container(border=True):
+        st.markdown("-----------------")
+        st.write(response.output_text)
+        st.markdown("-----------------")
+
+
 lookup = st.text_input("Find age")
 
 if st.button("Find"):
@@ -32,13 +53,3 @@ if st.button("Find"):
         st.write("No record for", lookup)
 
 
-
-
-client = OpenAI()
-
-response = client.responses.create(
-    model="gpt-4o",
-    input=f"Write a very brutal roast about a {name} and {age}, give the output in both English and Chinese.",
-)
-
-st.write(response.output_text)
